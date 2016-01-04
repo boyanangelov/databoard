@@ -3,7 +3,7 @@
 
 ### Installation instructions
 
-```
+```r
 # for installing from github, compiling from source etc.
 install.packages("devtools")
 
