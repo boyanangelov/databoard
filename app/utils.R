@@ -1,6 +1,4 @@
 # Helper functions
-# --------------------------------------------------------
-
 fbCleanHeader <- function(dataframe) {
     # store info
     headerInfo <- dataframe[1, ]

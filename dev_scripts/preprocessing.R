@@ -1,4 +1,4 @@
-# Dependencies ------------------------------------------------------------
+# Dependencies 
 library(readr)
 library(data.table)
 library(dplyr)
@@ -7,7 +7,7 @@ library(formatR)
 library(ggplot2)
 library(ggthemr)
 
-# Load data ---------------------------------------------------------------
+# Load data
 df <- tbl_df(read_csv("../data/amst.csv"))
 
 # sanity checks
@@ -15,7 +15,7 @@ dim(df)
 str(df)
 glimpse(df)
 
-# Data cleaning -----------------------------------------------------------
+# Data cleaning 
 # not necessary for new facebook insights format
 
 fbCleanHeader <- function(dataframe) {
@@ -32,7 +32,7 @@ fbCleanHeader <- function(dataframe) {
 }
 
 
-# Helper functions --------------------------------------------------------
+# Helper functions 
 
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     library(grid)
@@ -70,9 +70,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
 }
 
-
-# End helper functions ----------------------------------------------------
-
+# End helper functions 
 output <- fbCleanHeader(df)
 
 df <- output[[1]]
@@ -80,14 +78,14 @@ header_info <- (output[[2]]) %>% t() # transpose header info
 write.csv(header_info, "data/fb_variables.csv")
 write.csv(df, "data/clean_df.csv")
 
-# Subsetting --------------------------------------------------------------
+# Subsetting
 
 df <- data.frame(df[1:4])
 df[2:4] <- sapply(df[2:4], as.numeric)
 names(df) <- c("date", "total_likes", "daily_new_likes", "daily_new_unlikes")
 
 
-# Plots -------------------------------------------------------------------
+# Plots
 ggthemr('light')
 plot_1 <- ggplot(first_dataframe, aes(date, total_likes)) +
     geom_point(size = 4) +

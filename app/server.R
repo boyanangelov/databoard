@@ -1,6 +1,4 @@
 # Server
-# ------------------------------------------------------------------
-
 server <- shinyServer(function(input, output) {
     
     theData <- reactive({
